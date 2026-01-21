@@ -5,15 +5,11 @@ import json
 def callAPI(name:str):
     import requests
 
-    url = "http://127.0.0.1:8000/predict"
+    url = "https://gendermebackend-v1.onrender.com/predict"
 
     payload = {"name": name}
-    headers = {
-        "Content-Type": "application/json",
-        "User-Agent": "insomnia/12.2.0"
-    }
 
-    response = requests.request("POST", url, json=payload, headers=headers)
+    response = requests.request("POST", url, json=payload)
 
     return response.text
 
@@ -45,4 +41,32 @@ if submit:
             st.error(f"An error occurred: {e}")
             
 
-st.write("Do not use GenderMe for any kind of research or commercial use case", )
+def fixed_footer():
+    # CSS to position the footer
+    footer_style = """
+    <style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff;
+        color: black;
+        text-align: center;
+        padding: 10px;
+        z-index: 999; /* Ensures it stays on top of other elements */
+    }
+    </style>
+    """
+    
+    # Inject CSS
+    st.markdown(footer_style, unsafe_allow_html=True)
+    
+    # The footer content
+    st.markdown(
+        '<div class="footer"><p>Do not use GenderMe for any kind of research of commercial use case.</p></div>',
+        unsafe_allow_html=True
+    )
+
+
+fixed_footer()
