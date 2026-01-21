@@ -45,3 +45,4 @@ if submit:
             st.error(f"An error occurred: {e}")
             
 
+st.write("Do not use GenderMe for any kind of research or commercial use case", )
