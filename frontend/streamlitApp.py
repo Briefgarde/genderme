@@ -27,12 +27,22 @@ def fixed_footer():
     """
     st.markdown(footer_style, unsafe_allow_html=True)
 
+
+    text_footer = """
+        <div class="footer">
+            <p>Do not use GenderMe for any kind of research or commercial purpose.</p>
+            <p>App hosted on StreamLit, backend on Render.com.</p>
+        </div>
+    """
+
     st.markdown(
-        '<div class="footer"><p>Do not use GenderMe for any kind of research or commercial use case.</p></div>',
+        text_footer,
         unsafe_allow_html=True
     )
 
 st.title("GenderMe")
+
+st.markdown("A little demo by Briefgarde. Check out the <a href='https://github.com/Briefgarde/genderme'>GitHub</a>", unsafe_allow_html=True)
 
 name = None
 with st.form(key='form'):
@@ -60,4 +70,7 @@ if submit:
         except Exception as e:
             st.error(f"An error occurred: {e}")
             
+# st.subheader("Disclaimer")
+# st.markdown("GenderMe is not a state of the art gender predictor. Based on my testing, it reaches around 85% accuracy, lower than the ~93% accuracy that professional apps like [Genderize](https://genderize.io/) or [Namsor](https://namsor.app/) can reach. Still, as a side project put together in a little more than a month, I believe it is capable. ")
+
 fixed_footer()
