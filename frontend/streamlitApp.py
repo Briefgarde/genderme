@@ -3,6 +3,11 @@ import requests
 import json
 from predictor import predictor
 from footer import fixed_footer
+from study import show_study
+
+st.set_page_config(
+        page_title="GenderMe",
+)
 
 st.title("GenderMe")
 
@@ -14,6 +19,6 @@ with tab1:
     predictor()
 
 with tab2:
-    st.write("I love tabs")
-    
+    show_study()
+
 fixed_footer()
