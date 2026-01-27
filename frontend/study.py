@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv("../data/all_treated.csv")
+df = pd.read_csv("dir/all_treated.csv")
 def pieGenderRepartition(values_chart, values):
     fig, ax = plt.subplots(figsize=(10, 7), facecolor='none') # Transparent facecolor for Streamlit
     
