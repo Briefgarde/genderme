@@ -42,14 +42,18 @@ def pieGenderRepartition(values_chart, values):
     return fig
 
 def stackedBarLastLetter():
-    table = pd.crosstab(df['lastLetter'], df['gender'], normalize='index')
+    counts = pd.crosstab(df['lastLetter'], df['gender'])
+    threshold = 50
+    filtered_counts = counts[counts.sum(axis=1) > threshold]
+    table = filtered_counts.div(filtered_counts.sum(axis=1), axis=0)
     table = table.sort_values(by='male')
 
     fig, ax = plt.subplots(figsize=(10, 7), facecolor='none')
     table.plot(kind='bar', stacked=True, ax=ax, color=['pink', 'skyblue'])
 
     ax.set_ylabel('Proportion')
-    ax.set_title('Absolute gender groportion by Last Letter')
+
+    ax.set_title(f'Gender Lean by Last Letter (Min {threshold} occurrences)')
     return fig
 
 def show_study():
