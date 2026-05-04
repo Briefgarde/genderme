@@ -23,4 +23,4 @@ with tab2:
 with tabs3:
     show_critic()
 
-fixed_footer()
+fixed_footer() 
